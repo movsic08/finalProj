@@ -1,0 +1,25 @@
+php artisan tinker
+
+$model = new User()
+
+$model->name = 'Admin'
+
+$model->email = 'admin@example.com'
+
+$model->password = Hash::make('admin')
+
+$model->role = 1
+
+$model->save()
+
+this series of codes will make a new record of user for admin
+
+
+-----
+//create a new User
+
+$model->name = 'Arthur'
+$model->email = 'arthur@gmail.com'
+$model->password = Hash::make('arthur')
+$model->role = 1
+$model->save()

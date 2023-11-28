@@ -1,0 +1,19 @@
+google connected account
+shoeniverse802@gmail.com
+
+check mailtrap.io
+use google to login
+open email testing and choose laravel 9+ integrations
+
+update the .env file
+
+copy and paste the MAIl credentials from mailtrap into the .env file
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=66bad8ca9791aa
+MAIL_PASSWORD=79279d2efcfe9a
+
+run 
+php artisan config:clear
+php artisan cache:clear

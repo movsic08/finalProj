@@ -1,0 +1,12 @@
+shoeniverse802@gmail.com
+shoe123niverse
+
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=shoeniverse
+MAIL_PASSWORD=uupukvkftehuuuzm
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"

@@ -1,0 +1,26 @@
+goto console.twilio.com
+
+backup
+TWILIO_SID="ACbe46690b196ea6f1bc5b7639d21283e4"
+TWILIO_TOKEN="48fce15b5d691fa2cfd68e053df04e88"
+TWILIO_FROM="+639692696666"
+
+gmail: shoeniverse802@gmail.com
+password: Arthur081320@pqwrt
+
+account on twilio
+Arthur081320pqwrt
+
+
+Account SID
+ACbe46690b196ea6f1bc5b7639d21283e4
+
+Auth Token
+48fce15b5d691fa2cfd68e053df04e88
+
+
+
+then setup the env
+TWILIO_SID="ACbe46690b196ea6f1bc5b7639d21283e4"
+TWILIO_TOKEN="48fce15b5d691fa2cfd68e053df04e88"
+TWILIO_FROM="+639692696666"

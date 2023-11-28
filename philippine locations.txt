@@ -1,0 +1,30 @@
+C:\Users\admin\Documents\All About Laravel\Others\Sources\Philippine Location Resource DB\prpcmblmts-master
+find that file. it contains the migrations and seeders
+
+follow the migrations and command needed to do and to be run
+
+PLEASE READ THE INSTRUCTIONS ABOVE
+
+
+
+
+php artisan make:migration create_philippine_regions_table
+php artisan make:migration create_philippine_provinces_table
+php artisan make:migration create_philippine_cities_table
+php artisan make:migration create_philippine_barangays_table
+
+
+models
+
+php artisan make:model PhilippineRegion 
+php artisan make:model PhilippineProvinces 
+php artisan make:model PhilippineCity
+php artisan make:model PhilippineBarangay 
+
+
+seeders
+
+php artisan make:seeder PhilippineBarangaysTableSeeder
+php artisan make:seeder PhilippineCitiesTableSeeder
+php artisan make:seeder PhilippineProvincesTableSeeder
+php artisan make:seeder PhilippineRegionsTableSeeder

@@ -1,0 +1,34 @@
+before logging in as admin 
+search on the search bar
+http://127.0.0.1:8000/admin/login
+
+//role : super admin
+
+    Super Admin
+    shoeniverse802@gmail.com
+    SuperAdmin123@
+
+//role: admin
+
+    Regie 
+    regie@gmail.com 
+    Regie123@ 
+
+
+
+
+the user account is on the 
+http://127.0.0.1:8000/account/login
+
+//role: customer 
+Jerome
+regie081801@gmail.com
+Regie123@
+
+
+
+
+
+
+
+

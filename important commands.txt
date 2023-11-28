@@ -1,0 +1,12 @@
+    use to search in chat gpt 
+    short definition for database table field categories column name id
+
+
+    php artisan route:clear
+
+    php artisan view:clear
+
+    php artisan optimize
+
+    to run the website
+    php artisan serve       -- last command

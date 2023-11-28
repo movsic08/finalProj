@@ -1,0 +1,172 @@
+ //index
+    // public function index(Request $request,$product_id){
+    //     //check if product exists
+    //     $product = Product::find($product_id);
+    //     if(empty($product)){
+    //         return redirect()->route('products.index')->with('error','Product does not exists');
+    //     }
+
+    //     //get product variations
+    //     $product_variations = ProductVariation::latest()->select('product_variations.*','colors.color','colors.name','sizes.size')
+    //         ->leftJoin('colors','colors.id','=','product_variations.color_id')
+    //         ->leftJoin('sizes','sizes.id','=','product_variations.size_id');
+        
+    //     if(!empty($request->get('keyword'))){
+    //         $product_variations = $product_variations->where('colors.color','like','%'.$request->keyword.'%')->orWhere('colors.size','=',$request->keyword);
+    //     }
+
+        
+
+    //     $product_variations = $product_variations->where('product_id',$product_id)
+    //         ->paginate(10);
+
+    //     $data['product'] = $product;
+    //     $data['product_variations'] = $product_variations;
+
+    //     return view('admin.product-variation.list',$data);
+    // }
+
+
+
+
+    
+    //edit
+    // public function edit($product_id,$variation_id){
+
+    //     // dd($variation_id);
+
+    //     //check if product exists
+    //     $product = Product::find($product_id);
+    //     if(empty($product)){
+    //         return redirect()->route('products.index')->with('error','Product does not exists');
+    //     }
+
+    //     $data['product'] = $product;
+
+    //     //check if product variation exists
+    //     $product_variation = ProductVariation::find($variation_id);
+    //     if(empty($product_variation)){
+    //         return redirect()->route('product-variation.index',$product_id)->with('error','Product Variation does not exists');
+    //     }
+
+    //     $data['product_variation'] = $product_variation;
+
+        
+
+    //     $colors = Color::orderBy('name','ASC')->get();
+    //     $sizes = Size::orderBy('size','ASC')->get();
+
+    //     $data['colors'] = $colors;
+    //     $data['sizes'] = $sizes;
+
+    //     return view('admin.product-variation.edit',$data);
+
+
+    // }
+
+    // //update
+    // public function update(Request $request, $product_id,$variation_id){
+
+
+    //     //validate the data
+    //     $validator = Validator::make($request->all(),[
+    //         'color' => 'required',
+    //         'size' => 'required',
+    //         'stock_quantity' => 'required',
+            
+    //     ]);
+
+
+    //     if($validator->passes()){
+
+    //         // $product_variation = ProductVariation::where('color_id',$request->color)->where('size_id',$request->size)->first();
+    //         // if(!empty($product_variation)){ // if product variation already exists
+    //         //     //return errors
+    //         //     session()->flash('error','Product Variation Already Exists');
+    //         //     return response()->json([
+    //         //         'status' => true
+    //         //     ]);
+    //         // }
+
+    //         //if no errors, create the product variation
+    //         ProductVariation::update([
+    //             'product_id' => $product_id,
+    //             'color_id' => $request->color,
+    //             'size_id' => $request->size,
+    //             'stock_quantity' => $request->stock_quantity
+    //         ]);
+
+    //         //return success
+    //         session()->flash('success','Product variation updated successfully');
+    //         return response()->json([
+    //             'status' => true,
+    //         ]);
+
+    //     }else{
+    //         //return a json error response
+    //         return response()->json([
+    //             'status' => false,
+    //             'errors' => $validator->errors()
+    //         ]);
+    //     }
+
+
+    // }
+
+    // //delete
+    // public function destroy($product_id,$variation_id){
+    //     dd($variation_id);
+    // }
+
+
+
+     //validate the data
+        // $validator = Validator::make($request->all(),[
+        //     'color' => 'required|array|min:1',
+        //     'size' => 'required|array|min:1',
+        //     'stock_quantity' => 'required',
+            
+        // ]);
+
+
+        // if($validator->passes()){
+
+        //     // $product_variation = ProductVariation::where('color_id',$request->color)->where('size_id',$request->size)->first();
+        //     // if(!empty($product_variation)){ // if product variation already exists
+        //     //     //return errors
+        //     //     session()->flash('error','Product Variation Already Exists');
+        //     //     return response()->json([
+        //     //         'status' => true
+        //     //     ]);
+        //     // }
+
+        //     //if no errors, create the product variation
+        //     ProductVariation::updateOrCreate(
+        //         [
+        //             'product_id' => $product_id,
+        //             'color_id' => $request->color,
+        //             'size_id' => $request->size,
+        //         ],
+
+        //         [
+        //             'product_id' => $product_id,
+        //             'color_id' => $request->color,
+        //             'size_id' => $request->size,
+        //             'stock_quantity' => $request->stock_quantity
+        //         ]
+        //     );
+
+        //     //return success
+        //     session()->flash('success','Product variation added successfully');
+        //     return response()->json([
+        //         'status' => true,
+        //     ]);
+
+        // }else{
+        //     //return a json error response
+        //     return response()->json([
+        //         'status' => false,
+        //         'errors' => $validator->errors()
+        //     ]);
+        // }
+

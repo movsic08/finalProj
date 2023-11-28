@@ -1,0 +1,1 @@
+to learn more about dropzone, visit dropzone.dev

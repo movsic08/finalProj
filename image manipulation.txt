@@ -1,0 +1,18 @@
+Intenvention Image: learn more on image.intervention.io/v2
+
+-Intervention image is an open source PHP image handling and manipulation library. It provides an easier and expressive way to create, edit and compose images and supports currently the two most common image processing libraries - GD Library and Imagick
+
+
+commands
+
+composer require intervention/image
+
+then update on config/app.php file and add on the aliases array
+
+  'Image' => Intervention\Image\Facades\Image::class,
+
+and you can now use the Image class on any controller methods 
+
+ex. on CategoryController 
+
+use Image;

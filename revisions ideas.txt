@@ -1,0 +1,3 @@
+the user feature to cancel the order
+
+the user feature to not display the size of the selected colors that is not available

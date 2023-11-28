@@ -1,0 +1,207 @@
+
+{{-- 
+  <script>
+    /*for the Slug generator*/
+    $("#title").change(function(){
+      element = $(this);
+      $("button[type=submit]").prop('disabled',true);
+
+      $.ajax({
+        url: '{{ route("getSlug") }}',
+        type: 'get',
+        data: {title: element.val()},
+        dataType: 'json',
+        success: function(response){
+          $("button[type=submit]").prop('disabled',false);
+          if(response["status"] == true){
+            $("#slug").val(response['slug']);
+          }
+        },
+      });
+
+    });
+
+    /*productForm*/
+    $("#productForm").submit(function(event){
+      event.preventDefault();
+
+      $.ajax({
+        url: ,
+        type: ,
+        data: ,
+        dataType: ,
+        success: function(response){
+
+        },
+        error: function(){
+          console.log("Something went wrong");
+        }
+      });
+    });
+    /*end of productForm*/
+
+    //category to change sub_category ajax
+    $("#category").change(function(){
+
+      var category_id = $(this).val();
+
+      console.log(category_id);
+
+      //ajax
+      $.ajax({
+        url: '{{ route("product-subcategories.index") }}',
+        type: 'post',
+        data: {category_id: category_id},
+        dataType: 'json',
+        success: function(response){
+          console.log(response);
+        },
+        error: function(){
+          console.log("Something went wrong");
+        }
+
+      });
+     
+
+    });
+
+
+  </script>
+  --}}
+
+
+
+
+  <div class="card mb-3">
+                <div class="card-body">		
+                  <div class="row">
+                    @if(!empty($colors))
+                      <div class="col-md-12">
+                        <div class="mb-3 w-100">
+                          <label >Colors</label>
+                        
+                          <div class="row">
+
+                          
+                            @foreach($colors as $color)
+                            <div class="col-12 col-md-2 d-flex flex-row  justify-items-between"> 
+                              <div class="d-flex flex-column mr-3 align-items-center ">
+                                <div class="form-check ">
+
+                                  @php
+                                    $product_color = App\Models\ProductColor::where('product_id',$product->id)->where('color_id',$color->id)->first();
+                                    $color_selected = false;
+                                    if(!empty($product_color)){
+                                      $color_selected = true;
+                                    }
+
+                                  @endphp
+
+                                  <input {{ ($color_selected) ? 'checked' : '' }} name="colors[{{ $color->id }}][color_id]" data-color-id="{{ $color->id }}" class="colors form-check-input mt-2" type="checkbox" value="{{ $color->id }}" >
+
+                                  <label class="form-check-label" style="background: transparent;">
+                                    <div style="display:inline-block; width: 30px; height:30px; background: {{ $color->color }}; color: {{ $color->color }}; border-radius:100%; border:1px solid gray;"></div>
+                                  </label>
+                                </div>
+                                
+                                <div>
+                                  {{ $color->name }}
+                                </div>
+
+
+                                 
+                                <div class="form-check color-cons color-con-{{ $color->id }}">
+
+                                  <input {{ ($color_selected) && $product_color->track_qty == 'Yes' ? 'checked' : '' }} name="colors[{{ $color->id }}][track_qty]" class="colors form-check-input mt-2 color-track" type="checkbox" value="Yes" data-color-id="{{ $color->id }}">
+
+                                  <label class="form-check-label color-track" style="background: transparent;">
+                                    <small>Track Qty</small>
+                                  </label>
+                                  
+                                  <input value="{{ ($color_selected) && $product_color->qty > 0 ?  $product_color->qty : '' }}" name="colors[{{ $color->id }}][qty]" type="number"  class="form-control form w-100 color-qtys color-qty-{{ $color->id }}" disabled placeholder="Qty">
+                                  
+                                </div>
+
+                              </div>
+                            </div>
+                            @endforeach
+                          </div>
+
+
+                          
+
+                          <p id="color-error"></p>	
+                        </div>
+                      </div>
+                    @endif
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="card mb-3">
+                <div class="card-body">		
+                  <div class="row">
+
+
+                    @if(!empty($sizes))
+                      <div class="col-md-12">
+                        <div class="mb-3 w-100">
+                          <label >Sizes</label>
+                        
+                          
+                          <div class="row">
+                            @foreach($sizes as $size)
+                              <div class="col-12 col-md-2 d-flex flex-row  justify-items-between">
+
+
+                                <div class="d-flex flex-column mr-3 align-items-center justify-content-around">
+                                  <div class="form-check ">
+
+                                    @php 
+                                      $size_checked = false;
+
+                                      $product_size = App\Models\ProductSize::where('product_id',$product->id)->where('size_id',$size->id)->first();
+
+                                      if(!empty($product_size)){
+                                        $size_checked = true;
+                                      }
+
+                                    @endphp
+
+                                    <input {{ ($size_checked) ? 'checked' : '' }} data-size-id="{{ $size->id }}" name="sizes[{{ $size->id }}][size_id]" class="sizes form-check-input mt-2" type="checkbox" value="{{ $size->id }}" >
+
+                                    <label class="form-check-label" style="background: transparent;">
+                                      {{ $size->size }}
+                                    </label>
+                                  </div>
+
+
+                                  <div class="form-check size-cons size-con-{{ $size->id }}">
+
+                                    <input {{ ($size_checked) && $product_size->track_qty == 'Yes' ? 'checked' : '' }} name="sizes[{{ $size->id }}][track_qty]" class="sizes form-check-input mt-2 size-track size-track-qty-{{ $size->id }}" type="checkbox" value="Yes" data-size-id="{{ $size->id }}">
+
+                                    <label class="form-check-label size-track" style="background: transparent;">
+                                      <small>Track Qty</small>
+                                    </label>
+                                    
+                                    <input value="{{ ($size_checked) && $product_size->track_qty == 'Yes' ? $product_size->qty : '' }}" min="1" max="100" step="1" name="sizes[{{ $size->id }}][qty]" type="number"  class="form-control form w-100 size-qtys size-qty-{{ $size->id }}" disabled placeholder="Qty">
+                                    
+                                  </div>
+                                  
+
+                                </div>
+
+
+
+
+                              </div>
+                            @endforeach
+                          </div>
+
+
+                          <p id="size-error"></p>	
+                        </div>
+                      </div>
+                    @endif
